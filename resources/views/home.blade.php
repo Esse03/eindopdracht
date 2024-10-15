@@ -1,3 +1,3 @@
-<x-layout>
+<x-app-layout>
     <h1>The Weird made up animal collection</h1>
-</x-layout>
+</x-app-layout>

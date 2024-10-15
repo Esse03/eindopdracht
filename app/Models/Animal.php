@@ -7,5 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Animal extends Model
 {
-    use HasFactory;
+
+    /**
+     * @var string
+     */
+
+    protected $table = 'animals';
+
+    public static function find($id)
+    {
+    }
+
 }
