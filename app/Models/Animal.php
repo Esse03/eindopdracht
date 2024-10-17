@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\View\View;
 
 class Animal extends Model
 {
@@ -14,8 +15,6 @@ class Animal extends Model
 
     protected $table = 'animals';
 
-    public static function find($id)
-    {
-    }
+
 
 }

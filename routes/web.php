@@ -13,8 +13,6 @@ Route::get('/dashboard', function () {
 
 Route::resource('/animals', AnimalController::class)->name('index', 'animals');
 
-Route::resource('/animal', AnimalController::class)->name('show', 'animal');
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

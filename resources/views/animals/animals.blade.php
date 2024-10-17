@@ -1,10 +1,11 @@
-<x-layout>
-    <table>
-        <th>Name</th>
+<x-app-layout>
     @foreach($animals as $animal)
-            <tr>
-                <a href="{{route('animals.show', $animal)}}">{{$animal->name}}</a>
-            </tr>
-        </table>
+
+        <div>
+            <a href="{{route('animals.show', [$animal])}}">{{$animal->name}}</a>
+        </div>
+
     @endforeach
-</x-layout>
+
+    <a href="{{route('animals.create')}}" >New Animal</a>
+</x-app-layout>
