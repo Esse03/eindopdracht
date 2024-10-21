@@ -1,4 +1,20 @@
+# 17.10.2024
+
+## Database
+
+* Database table aangemaakt voor comments
+* Database table voor animals is bijgewerkt voor dynamische toepassing
+  * Creator gekoppeld
+  * Comment gekoppeld
+  * Image toegevoegd
+
 # 15.10.2024
+
+## Database
+
+* Database table (animals) is aangemaakt
+* Model voor Animal is aangemaakt
+* Database is toegepast als read (animals.animals)
 
 # 14.10.2024
 ## Moscow

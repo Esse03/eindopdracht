@@ -8,4 +8,6 @@
     @endforeach
 
     <a href="{{route('animals.create')}}" >New Animal</a>
+
+    
 </x-app-layout>

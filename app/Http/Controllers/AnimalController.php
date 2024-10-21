@@ -24,6 +24,7 @@ class AnimalController extends Controller
     public function create()
     {
         //
+        return view('animals.create');
     }
 
     /**
@@ -32,6 +33,16 @@ class AnimalController extends Controller
     public function store(Request $request)
     {
         //
+        $animal = new Animal;
+
+        $animal->name = $request->name;
+        $animal->breed = $request->breed;
+        $animal->description = $request->description;
+        $animal->image = $request->image;
+        $animal->created_by = auth()->user()->id;
+        $animal->save();
+        return redirect()->route('home')->with('success', 'Animal created successfully');
+
     }
 
     /**
