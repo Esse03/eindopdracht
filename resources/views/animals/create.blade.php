@@ -21,14 +21,5 @@
         <div>
             <button type="submit">Submit</button>
         </div>
-
-
-
-
-
-
-
-
-
     </form>
 </x-app-layout>

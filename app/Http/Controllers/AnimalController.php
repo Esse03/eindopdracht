@@ -61,7 +61,8 @@ class AnimalController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $animal = Animal::find($id);
+        return view('animals.edit', compact('animal'));
     }
 
     /**
@@ -69,7 +70,13 @@ class AnimalController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $animal = Animal::find($id);
+        $animal->name = $request->name;
+        $animal->breed = $request->breed;
+        $animal->description = $request->description;
+        $animal->image = $request->image;
+        $animal->save();
+        return redirect()->route('profile.index')->with('success', 'Animal updated successfully');
     }
 
     /**
@@ -77,6 +84,8 @@ class AnimalController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $animal = Animal::find($id);
+        $animal->delete();
+        return redirect()->route('profile.index')->with('success', 'Animal deleted successfully');
     }
 }

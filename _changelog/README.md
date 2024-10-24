@@ -1,3 +1,16 @@
+# 23.10.2024
+
+# 22.10.2024
+
+## Create/Edit
+* Create Pagina afgemaakt (Moet nog afbeelding database)
+* Show model op profile gemaakt
+  * Route van profile gewijzigd van edit naar show (Soort van, kleine issue)
+  * Animals gemaakt door gebruiker worden getoond
+  * link naar edit voor eigen Animals
+* Edit pagina aangemaakt en functioneel
+  * Via Edit link naar Delete, heeft nog werk nodig
+
 # 17.10.2024
 
 ## Database
@@ -7,6 +20,12 @@
   * Creator gekoppeld
   * Comment gekoppeld
   * Image toegevoegd
+
+## Create
+
+* Start voor create pagina gemaakt
+  * Animal kan worden aangemaakt
+  * Animal wordt opgeslagen in database
 
 # 15.10.2024
 

@@ -90,7 +90,7 @@
             </div>
 
             <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile.edit')">
+                <x-responsive-nav-link :href="route('profile.index')">
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
 
