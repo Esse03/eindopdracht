@@ -7,7 +7,7 @@
 
         <h3 class="text-lg font-medium">Quick Links</h3>
         <ul class="mt-2">
-            <li><a href="" class="text-blue-500 hover:underline">Manage Users</a></li>
+            <li><a href="{{route('admin.users')}}" class="text-blue-500 hover:underline">Manage Users</a></li>
             <li><a href="" class="text-blue-500 hover:underline">Settings</a></li>
             <li><a href="" class="text-blue-500 hover:underline">View Reports</a></li>
         </ul>

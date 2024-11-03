@@ -12,12 +12,12 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('home')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                         {{ __('Home') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('animals.index')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('animals.index')" :active="request()->routeIs('animals.index')">
                         {{ __('Animals') }}
                     </x-nav-link>
                 </div>
@@ -26,6 +26,11 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('admin.home')" :active="request()->routeIs('admin.home')">
                         {{ __('Admin') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('admin.users')" :active="request()->routeIs('admin.users')">
+                        {{ __('Users') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">

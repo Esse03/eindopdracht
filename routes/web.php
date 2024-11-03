@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AnimalController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\AdminMiddleware;
@@ -14,6 +15,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::resource('/animals', AnimalController::class)->name('index', 'animals.index');
+Route::post('/animals/{animal}/comments', [CommentController::class, 'store'])->name('comments.store');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
@@ -24,6 +26,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.home');
+    Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users');
 });
 
 require __DIR__.'/auth.php';

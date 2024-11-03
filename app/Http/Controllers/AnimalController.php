@@ -60,7 +60,7 @@ class AnimalController extends Controller
     {
         //
 
-        $animal = Animal::with('user')->findOrFail($id);
+        $animal = Animal::with('user', 'comments.user')->findOrFail($id);
         return view('animals.show', compact('animal'));
     }
 

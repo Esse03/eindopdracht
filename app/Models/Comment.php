@@ -5,26 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\View\View;
 
-class Animal extends Model
+class Comment extends Model
 {
-
     /**
      * @var string
      */
 
-    protected $table = 'animals';
+    protected $table = 'comments';
 
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function comments(): HasMany
+    public function animal(): BelongsTo
     {
-        return $this->hasMany(Comment::class);
+        return $this->belongsTo(Animal::class);
     }
-
 }

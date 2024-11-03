@@ -17,7 +17,7 @@
 
         @endforeach
     @else
-
+        <p>No animals Yet! Make a new one!</p>
     @endif
 
         <div class="relative rounded-3xl bg-gray-900 p-8 shadow-2xl ring-1 ring-gray-900/10 sm:p-10">
