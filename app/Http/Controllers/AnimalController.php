@@ -4,18 +4,32 @@ namespace App\Http\Controllers;
 
 use App\Models\Animal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use function Laravel\Prompts\multisearch;
 
 class AnimalController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $searchTerm = $request->query('query');
+        Log::info('Search Term:', ['query' => $searchTerm]); // Log the search term
 
-        $animals = Animal::all();
-        return view('animals.animals', compact('animals'));
+        if ($request->has('query')) {
+            $animals = Animal::where('name', 'like', '%' . $searchTerm . '%')->get();
+        } else {
+            $animals = Animal::all();
+        }
+
+        return view('animals.index', compact('animals'));
+    }
+
+    public function search(Request $request)
+    {
+        $animals = Animal::where('name', 'like', '%' . $request->search . '%')->get();
+        return view('animals.index', compact('animals'));
     }
 
     /**
@@ -38,8 +52,8 @@ class AnimalController extends Controller
         $animal->name = $request->name;
         $animal->breed = $request->breed;
         $animal->description = $request->description;
-        $animal->image = $request->image;
-        $animal->created_by = auth()->user()->id;
+        $animal->image = $request->file('image')->storePublicly('animals', 'public');
+        $animal->user_id = auth()->user()->id;
         $animal->save();
         return redirect()->route('home')->with('success', 'Animal created successfully');
 

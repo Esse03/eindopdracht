@@ -23,7 +23,7 @@
         <form method="post" action="{{route('animals.destroy', [$animal])}}">
             @csrf
             @method('DELETE')
-            <button type="submit">Delete {{$animal}}</button>
+            <button type="submit">Delete {{$animal->name}}</button>
 
         </form>
         <div>

@@ -11,7 +11,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::resource('/animals', AnimalController::class)->name('index', 'animals');
+Route::resource('/animals', AnimalController::class)->name('index', 'animals.index');
+Route::get('/animals/find', [AnimalController::class, 'search'])->name('animals.search');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');

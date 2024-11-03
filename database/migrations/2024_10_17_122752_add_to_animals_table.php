@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::table('animals', function (Blueprint $table) {
             //
 
-            $table->foreignId('created_by')->nullable()->constrained('users');
+            $table->foreignId('user_id')->nullable()->constrained('users');
             $table->string('image')->nullable();
         });
     }

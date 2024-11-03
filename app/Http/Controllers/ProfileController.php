@@ -18,7 +18,7 @@ class ProfileController extends Controller
 
     public function index(Request $request): View
     {
-        $animals = Animal::where('created_by', Auth::id())->get();
+        $animals = Animal::where('user_id', Auth::id())->get();
         return view('profile.index', [
             'user' => $request->user(), "animals" => $animals
         ]);
