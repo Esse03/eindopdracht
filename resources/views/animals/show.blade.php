@@ -22,21 +22,34 @@
 
         <div class="bg-gray-800 rounded-lg p-8 shadow-xl">
             <h2 class="text-2xl font-semibold text-gray-200 mb-4">Comments</h2>
-            <form method="POST" action="{{ route('comments.store', $animal) }}" class="mb-6">
-                @csrf
-                <div>
-                    <label for="comment" class="block text-gray-300 mb-2">Leave a comment!</label>
-                    <input type="text" name="comment" id="comment" class="rounded-md shadow-sm border-gray-700 bg-gray-600 text-white placeholder-gray-400 focus:border-gray-500 focus:ring focus:ring-gray-500 focus:ring-opacity-50 w-full py-2 px-3" required>
-                </div>
-                <button type="submit" class="mt-4 bg-gray-700 text-white rounded-md px-4 py-2 hover:bg-gray-600 transition transform hover:scale-105">Post</button>
-            </form>
+            @if($animalCount >= 5)
+                <form method="POST" action="{{ route('comments.store', $animal) }}" class="mb-6">
+                    @csrf
+                    <div>
+                        <label for="comment" class="block text-gray-300 mb-2">Leave a comment!</label>
+                        <input type="text" name="comment" id="comment" class="rounded-md shadow-sm border-gray-700 bg-gray-600 text-black placeholder-gray-400 focus:border-gray-500 focus:ring focus:ring-gray-500 focus:ring-opacity-50 w-full py-2 px-3" required>
+                    </div>
+                    <button type="submit" class="mt-4 bg-gray-700 text-white rounded-md px-4 py-2 hover:bg-gray-600 transition transform hover:scale-105">Post</button>
+                </form>
+            @else
+                <p class="text-gray-400">You need to upload at least 5 animals to leave a comment!</p>
+            @endif
 
-            @foreach($animal->comments as $comment)
-                <div class="bg-gray-700 p-4 rounded-lg mb-4 shadow-md">
-                    <p class="text-gray-300"><strong>{{ $comment->user->name }}</strong> says:</p>
-                    <p class="text-gray-200">{{ $comment->comment }}</p>
-                    <small class="text-gray-500">Posted on {{ $comment->created_at->format('F j, Y \a\t g:i A') }}</small>
-                </div>
+
+        @foreach($animal->comments as $comment)
+                @if(!$comment->hidden || Auth::user()->is_admin)
+                    <div class="bg-gray-700 p-4 rounded-lg mb-4 shadow-md">
+                        <p class="text-gray-300"><strong>{{ $comment->user->name }}</strong> says:</p>
+                        <p class="text-gray-200">{{ $comment->comment }}</p>
+                        <small class="text-gray-500">Posted on {{ $comment->created_at->format('F j, Y \a\t g:i A') }}</small>
+                        @if(Auth::check() && Auth::user()->is_admin)
+                            <form method="post" action="{{ route('comments.hide', [$animal, $comment]) }}">
+                                @csrf
+                                <button type="submit" class="text-gray-400 hover:text-gray-300 mt-2">@if($comment->hidden) Show @else Hide @endif</button>
+                            </form>
+                        @endif
+                    </div>
+                @endif
             @endforeach
 
             @if($animal->comments->isEmpty())

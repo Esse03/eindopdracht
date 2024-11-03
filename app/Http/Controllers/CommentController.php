@@ -33,6 +33,20 @@ class CommentController extends Controller
         return redirect()->route('animals.show', [$animal_id])->with('success', 'Comment added successfully');
     }
 
+    public function hide($animal, $id)
+    {
+     $comment = Comment::find($id);
+
+     if ($comment->hidden) {
+         $comment->hidden = false;
+     } else {
+         $comment->hidden = true;
+     }
+     $comment->save();
+
+        return redirect()->route('animals.show', [$animal])->with('success', 'Comment added successfully');
+    }
+
 
     /**
      * Show the form for editing the specified resource.

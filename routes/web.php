@@ -15,7 +15,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::resource('/animals', AnimalController::class)->name('index', 'animals.index');
-Route::post('/animals/{animal}/comments', [CommentController::class, 'store'])->name('comments.store');
+Route::post('/animals/{animal}/comment', [CommentController::class, 'store'])->name('comments.store');
+Route::post('/animals/{animal}/{comment}/hide', [CommentController::class, 'hide'])->name('comments.hide');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');

@@ -2,7 +2,7 @@
     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
         <form method="GET" action="{{ route('animals.index') }}" class="mb-6 bg-gray-800 rounded-lg p-6 shadow-lg">
             <label for="query" class="block text-gray-300 mb-2">Search for animal</label>
-            <input type="text" name="query" id="query" class="rounded-md shadow-sm border-gray-700 bg-gray-700 text-white placeholder-gray-400 focus:border-gray-500 focus:ring focus:ring-gray-500 focus:ring-opacity-50 w-full py-2 px-3">
+            <input type="text" name="query" id="query" class="rounded-md shadow-sm border-gray-700 bg-gray-700 text-black placeholder-gray-400 focus:border-gray-500 focus:ring focus:ring-gray-500 focus:ring-opacity-50 w-full py-2 px-3">
             <button type="submit" class="mt-2 bg-gray-600 text-white rounded-md px-4 py-2 hover:bg-gray-500 transition transform hover:scale-105">Search</button>
         </form>
 

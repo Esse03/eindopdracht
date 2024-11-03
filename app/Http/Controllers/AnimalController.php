@@ -18,7 +18,12 @@ class AnimalController extends Controller
         Log::info('Search Term:', ['query' => $searchTerm]); // Log the search term
 
         if ($request->has('query')) {
-            $animals = Animal::where('name', 'like', '%' . $searchTerm . '%')->get();
+            $animals = Animal::where('name', 'like', '%' . $searchTerm . '%')
+                ->orWhereHas('user', function ($query) use ($searchTerm) {
+                    $query->where('name', 'like', '%' . $searchTerm . '%');
+                })
+                ->get();
+
         } else {
             $animals = Animal::all();
         }
@@ -61,7 +66,10 @@ class AnimalController extends Controller
         //
 
         $animal = Animal::with('user', 'comments.user')->findOrFail($id);
-        return view('animals.show', compact('animal'));
+
+        $animalCount = $animal->user->animal()->count();
+
+        return view('animals.show', compact('animal', 'animalCount'));
     }
 
     /**
