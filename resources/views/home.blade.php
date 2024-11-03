@@ -12,7 +12,7 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="font-sans antialiased bg-gray-100">
+<body class="font-sans antialiased bg-gray-900 text-gray-200">
 <div class="flex items-center justify-center min-h-screen">
     <div class="text-center">
         <h1 class="text-4xl font-bold">{{ config('app.name') }}</h1>
@@ -23,8 +23,8 @@
                 @auth
                     @include('layouts.navigation')
                 @else
-                    <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
-                    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
+                    <a href="{{ route('login') }}" class="text-sm text-gray-300 underline hover:text-gray-100">Log in</a>
+                    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-300 underline hover:text-gray-100">Register</a>
                 @endauth
             </div>
         @endif
@@ -32,3 +32,5 @@
 </div>
 </body>
 </html>
+
+
