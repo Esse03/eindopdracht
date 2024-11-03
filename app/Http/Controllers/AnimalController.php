@@ -26,12 +26,6 @@ class AnimalController extends Controller
         return view('animals.index', compact('animals'));
     }
 
-    public function search(Request $request)
-    {
-        $animals = Animal::where('name', 'like', '%' . $request->search . '%')->get();
-        return view('animals.index', compact('animals'));
-    }
-
     /**
      * Show the form for creating a new resource.
      */
@@ -66,7 +60,7 @@ class AnimalController extends Controller
     {
         //
 
-        $animal = Animal::find($id);
+        $animal = Animal::with('user')->findOrFail($id);
         return view('animals.show', compact('animal'));
     }
 

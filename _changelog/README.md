@@ -1,4 +1,18 @@
+# 03.11.2024
+
+## Search query
+* animals.index heeft een functionele zoekbalk
+
+## Admin
+* Admin pagina aangemaakt
+  * Admin authorisatie aanwezig
+  * Admin nav aangemaakt
+  * breeze homepagina hersteld
+
 # 23.10.2024
+
+## Afbeeldingen
+* Afbeeldingen kunnen getoond worden en worden opgeslagen
 
 # 22.10.2024
 
